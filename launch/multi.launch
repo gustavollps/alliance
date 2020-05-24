@@ -1,0 +1,12 @@
+<launch>
+
+	<node name="Robot0" pkg="alliance" type="alliance_robot0">
+    	   </node>
+
+	<node name="Robot1" pkg="alliance" type="alliance_robot1">
+    	   </node>
+
+	<node name="Robot2" pkg="alliance" type="alliance_robot2">
+    	   </node>
+
+</launch>

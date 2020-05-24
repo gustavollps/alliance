@@ -1,0 +1,26 @@
+<launch>
+    <arg name="robots" default="1" />
+    <arg name="tasks" default="4" />
+    <arg name="first" default="1" />
+
+    <arg name="num" value="$(eval arg('robots')-1)"/>
+
+    <group if="$(eval arg('first') > 0)">
+        <node name="Monitor" pkg="alliance" type="monitor" args="$(arg robots) $(arg tasks)" output="screen"/>
+    </group>
+
+    <node name="RosAria$(arg num)" pkg="rosaria" type="RosAria"/>
+    <node name="Robot$(arg num)" pkg="alliance" type="robot_r_alloc" args="$(arg num)">
+        <rosparam file="$(find alliance)/config/params$(arg num).yaml" command="load"/>
+    </node>
+
+
+    <!-- recursively start new node -->
+    <include file="$(find alliance)/launch/multi_alliance.launch" if="$(eval arg('robots') - 1 > 0)">
+        <arg name="robots" value="$(eval arg('robots') - 1)"/>
+        <arg name="first" value="0" />
+    </include>
+
+
+
+</launch>

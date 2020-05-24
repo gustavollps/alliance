@@ -1,0 +1,6 @@
+sensory_feedback: [1, 1, 1, 1, 1]
+rho: 5
+tau: 150
+id: 0
+# idle | wander right | wander left | boundary | report
+delta: [1.0, 5.0, 3.0, 2.5, 2.0]

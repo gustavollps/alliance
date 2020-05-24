@@ -1,0 +1,19 @@
+<launch>
+    <arg name="robots" default="3" />
+    <arg name="tasks" default="5" />
+
+    <node name="Monitor" pkg="alliance" type="monitor_l" args="$(arg robots) $(arg tasks)" output="screen"/>
+
+    <node name="Robot0" pkg="alliance" type="l_alliance_allocation.py" args="0" output="screen">
+        <rosparam file="$(find alliance)/config_py/params0.yaml" command="load"/>
+    </node>
+
+    <node name="Robot1" pkg="alliance" type="l_alliance_allocation.py" args="1">
+        <rosparam file="$(find alliance)/config_py/params1.yaml" command="load"/>
+    </node>
+
+    <node name="Robot2" pkg="alliance" type="l_alliance_allocation.py" args="2">
+        <rosparam file="$(find alliance)/config_py/params2.yaml" command="load"/>
+    </node>
+
+</launch>

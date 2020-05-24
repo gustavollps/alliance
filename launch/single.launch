@@ -1,0 +1,10 @@
+<launch>
+    <arg name="robots" default="0" />
+
+
+        <node name="RosAria$(arg robots)" pkg="rosaria" type="RosAria">
+        </node>
+        <node name="Robot$(arg robots)" pkg="alliance" type="alliance_robot0">
+        </node>
+
+</launch>
